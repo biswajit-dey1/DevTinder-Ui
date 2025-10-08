@@ -8,7 +8,7 @@ const Profile = () => {
         <>
             {user &&
                 <div>
-                    <EditProfile user={user}/>
+                    <EditProfile user={user} />
                 </div>
 
             }

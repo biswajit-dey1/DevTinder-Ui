@@ -16,26 +16,26 @@ const Feed = () => {
 
     if (feed) return
 
-    const res = await axios.get(BASE_URL + "/user/feed",{
-      withCredentials:true
+    const res = await axios.get(BASE_URL + "/user/feed", {
+      withCredentials: true
     })
-    
+
     dispatch(addFeed(res.data.feed))
-    
+
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getFeed()
-  },[])
-  
+  }, [])
+
   return (
-     <div>
-      {feed && 
-        <UserCard user={feed[0]}/>
-      
+    <div>
+      {feed &&
+        <UserCard user={feed[0]} />
+
       }
-       
-     </div>
+
+    </div>
   )
 }
 
