@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../utils/constant'
 import { removeUser } from '../Store/userSlice'
 import { removefeed } from '../Store/feedSlice'
+import { removeRequest } from '../Store/requestSlice'
+import { removeConnection } from '../Store/connectionSlice'
 
 const Navbar = () => {
 
@@ -24,6 +26,8 @@ const Navbar = () => {
 
             dispatch(removeUser())
             dispatch(removefeed())
+            dispatch(removeRequest())
+            dispatch(removeConnection())
             navigate("/login")
 
         } catch (error) {
@@ -64,7 +68,8 @@ const Navbar = () => {
                                         <span className="badge">New</span>
                                     </Link>
                                 </li>
-                                <li><a>Settings</a></li>
+                                <li><Link to={"/request"}>Request</Link></li>
+                                  <li><Link to={"/connection"}>Connection</Link></li>
                                 <li><a onClick={handleLogout}>Logout</a></li>
                             </ul>
                         </div>
