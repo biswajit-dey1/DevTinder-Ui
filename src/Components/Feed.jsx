@@ -24,9 +24,17 @@ const Feed = () => {
 
   }
 
+
+
   useEffect(() => {
     getFeed()
   }, [])
+
+   if (!feed) 
+      return <h1 className='text-center my-10'>Loading feeds...</h1>;
+   
+  if(feed.length === 0)
+     return <h1 className='text-center my-10'>No Feed Available</h1>
 
   return (
     <div>

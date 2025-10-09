@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../utils/constant'
 import { removeUser } from '../Store/userSlice'
-import { removefeed } from '../Store/feedSlice'
+import { removeAllFeed } from '../Store/feedSlice'
 import { removeRequest } from '../Store/requestSlice'
 import { removeConnection } from '../Store/connectionSlice'
 
@@ -25,7 +25,7 @@ const Navbar = () => {
             })
 
             dispatch(removeUser())
-            dispatch(removefeed())
+            dispatch(removeAllFeed())
             dispatch(removeRequest())
             dispatch(removeConnection())
             navigate("/login")
@@ -69,7 +69,7 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li><Link to={"/request"}>Request</Link></li>
-                                  <li><Link to={"/connection"}>Connection</Link></li>
+                                <li><Link to={"/connection"}>Connection</Link></li>
                                 <li><a onClick={handleLogout}>Logout</a></li>
                             </ul>
                         </div>
