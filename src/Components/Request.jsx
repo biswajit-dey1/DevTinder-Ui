@@ -3,12 +3,14 @@ import React, { useEffect } from 'react'
 import { BASE_URL } from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
 import { addRequest, removeUserFromRuquest } from '../Store/requestSlice'
-import { addFeed } from '../Store/feedSlice'
+
+import { setConnection } from '../Store/connectionSlice'
 
 const Request = () => {
 
   const dispatch = useDispatch()
   const requests = useSelector(store => store.request)
+
 
   const handleReviewRequest = async (status, requestId) => {
 
@@ -17,7 +19,8 @@ const Request = () => {
     })
 
     dispatch(removeUserFromRuquest(requestId))
-    dispatch(addFeed(res.data.data.fromUserId))
+
+    dispatch(setConnection(res.data.data.fromUserId))
 
     console.log(res.data.data.fromUserId)
   }
@@ -25,11 +28,12 @@ const Request = () => {
 
   const pendingRequest = async () => {
 
-    if (requests) return
+
     const res = await axios.get(BASE_URL + "/user/requests/received", {
       withCredentials: true
     })
 
+    console.log(res)
     dispatch(addRequest(res.data.pendingRequest))
 
 
